@@ -6,6 +6,7 @@ import com.SmartContactManager.Smart.Contact.Manager.Final.Configuration.UserFor
 import com.SmartContactManager.Smart.Contact.Manager.Final.Entity.User;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Repository.UserRepository;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Service.UserService;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import java.awt.Desktop;
+import java.net.URI;
 
 @Controller
 @RequestMapping("/user")
@@ -33,9 +36,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    public String home() {
-        return "Home";
-    }
+
+
+
+
+
 
     @GetMapping("/login")
     public String loginPage( @RequestParam(value = "error", required = false) String error, Model model,HttpServletRequest request,

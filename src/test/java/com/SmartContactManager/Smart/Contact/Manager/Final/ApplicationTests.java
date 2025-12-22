@@ -9,14 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 @SpringBootTest
 class ApplicationTests {
 
-    @Autowired
-    public JavaMailSender javaMailSender;
-
-    @Autowired
-    EmailService service;
-
-    @Autowired
-    UserRepository userService;
 
 	@Test
 	void contextLoads() {

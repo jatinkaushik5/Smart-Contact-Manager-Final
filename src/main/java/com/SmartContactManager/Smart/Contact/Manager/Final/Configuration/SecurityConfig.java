@@ -52,8 +52,8 @@ public class SecurityConfig {
         httpSecurity.csrf(csrf -> csrf.disable());
 
         httpSecurity.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/register", "/user/userRegister","/user/login","/user/authenticate","/user/OtpSend","/Home.html","/user/transfer","/user/userotpConfirmation").permitAll() // Allow register
-                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/user/register", "/user/userRegister","/user/login","/user/authenticate","/user/OtpSend","/user/transfer","/user/userotpConfirmation").permitAll() // Allow register
+                .requestMatchers("/","/index.html","/css/**", "/js/**", "/img/**").permitAll()
                 .requestMatchers("/user/**").authenticated()
                 .anyRequest().authenticated()// others need login;
         );
