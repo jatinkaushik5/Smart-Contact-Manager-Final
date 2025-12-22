@@ -43,7 +43,7 @@ public class ContactController {
     @Autowired
     ContactService contactService;
 
-    @GetMapping("contact")
+    @GetMapping("/contact")
     public String contactForm(){
         return "ContactPage";
     }

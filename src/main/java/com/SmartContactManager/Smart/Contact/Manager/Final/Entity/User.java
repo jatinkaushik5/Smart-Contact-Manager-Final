@@ -36,6 +36,7 @@ public class User implements UserDetails {
     private String password;
     private String about;
     private  String profilepic;
+    private  String profilepicUrl="https://res.cloudinary.com/dgdznrtb8/image/upload/v1766414497/defaultprofile_edduwq.avif";
     @Column(unique = true)
     private String phoneNumber;
 

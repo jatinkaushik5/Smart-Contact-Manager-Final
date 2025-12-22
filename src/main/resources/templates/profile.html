@@ -2,10 +2,126 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/output.css}">
 </head>
-<body >
-Welcome to User Profile
-<h1 th:text="${LoggedinUser.email}"></h1>
+<body th:object="${LoggedinUser}" class="bg-slate-200">
+<nav class="flex justify-evenly bg-slate-950 min-h-14">
+    <div class="flex flex-col justify-center md:hidden ">
+        <a href="" id="sidenavbtn"> <i class="fa-solid fa-bars text-white text-2xl" ></i></a>
+    </div>
+    <div class="flex gap-1.5 mt-4">
+        <img src="telephone.png" alt="" class="max-h-7">
+        <h2 class=" text-white">SmartContactManager</h2>
+    </div>
+    <div class="hidden gap-4 mt-4 md:flex">
+        <a href="" class="text-white">Home</a>
+        <a href="" class="text-white">About</a>
+        <a href="" class="text-white">Services</a>
+        <a href="" class="text-white">Contact</a>
+    </div>
+    <div class=" flex mt-3">
+        <a href="" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9  font-bold ">Logout</a>
+    </div>
+</nav>
+<!-- nav ends -->
+<main class="grid grid-cols-5 min-h-[90vh]">
+    <div class=" col-span-1 fixed md:static z-50 h-full  bg-slate-950  hidden transition-transform duration-300   " id="sidenav">
+        <!-- 1 -->
+        <div class="flex pl-1 ">
+            <p class="font-bold text-green-400" th:text="*{email}"></p>
+        </div>
+        <!-- 2 -->
+        <div class="flex flex-col pl-2 gap-4 mt-7">
+            <!-- 1 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Dashboard</a>
+            </div>
+            <!-- 2 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-circle-user text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Profile</a>
+            </div>
+            <!-- 3 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-message p-1 text-white"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Inbox</a>
+            </div>
+            <!-- 4 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white  p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Users</a>
+            </div>
+            <!-- 5 -->
+            <div class="flex gap-4">
+                <i class="fa-brands fa-shopify p-1 text-white"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Products</a>
+            </div>
+            <!-- 6 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Sign in</a>
+            </div>
+            <!-- 7 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Sign up</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- mainbody -->
+    <div class="col-span-5 flex h-[95vh] flex-col  items-center justify-center  ">
+        <div class="flex w-full justify-centers justify-center  ">
+            <div class="hero bg-base-200 flex flex-col   w-[50%]   ">
+                <p class="font-serif">User Profile</p>
+                <div class="hero-content flex flex-col  bg-slate-950  w-full min-h-88 min-w-fit  ">
+                    <img th:src="*{profilepicUrl}" class="max-w-sm rounded-lg shadow-2xl border-2 h-34 "/>
+                    <div class="  w-[50%] min-w-fit">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-white">
+                                <p class="text-warning font-serif">Name</p>
+                                <p th:text="*{name}"></p>
+                            </div>
+                            <div class="flex justify-between text-white">
+                                <p class="text-warning font-serif">Phone Number</p>
+                                <p th:text="*{phoneNumber}"></p>
+                            </div>
+                            <div class="flex md:flex-row flex-col items-center justify-between text-white ">
+                                <p class="text-warning font-serif">Email</p>
+                                <p th:text="*{email}"></p>
+                            </div>
+                            <div class="flex mt-2 flex-col items-center justify-between text-white ">
+                                <p class="text-warning font-serif">About</p>
+                                <p class="text-wrap text-center" th:text="*{about}"> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- formpage -->
+        <section class="  ">
+            <form th:action="@{/user/changeProfile}" class="mt-3" enctype="multipart/form-data" method="post">
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <label class="label">Profile Picture</label>
+                    <input type="file" class="input pt-2" name="userProfile" placeholder="" />
+
+                    <button class="btn btn-neutral mt-4" type="submit">Login</button>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+
+</main>
+<script th:src="@{/js/navscript.js}"></script>
+<script src="sidenav.js"></script>
 </body>
 </html>

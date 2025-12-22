@@ -30,7 +30,7 @@
 <main class="grid grid-cols-5 min-h-[94vh]">
     <div class=" col-span-1 fixed md:static  h-full  bg-slate-950  transition-transform duration-300   " id="sidenav">
         <!-- 1 -->
-        <div class="flex pl-1 ">
+        <div class="flex flex-col items-center pl-1 ">
             <p class="font-bold text-green-400 text-center" th:text="${User.email}"></p>
         </div>
         <!-- 2 -->
@@ -43,7 +43,7 @@
             <!-- 2 -->
             <div class="flex gap-4">
                 <i class="fa-solid fa-circle-user text-white p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Profile</a>
+                <a th:href="@{/user/profile}" class="hover:border-b-2 text-white border-blue-400">Profile</a>
             </div>
             <!-- 3 -->
             <div class="flex gap-4">

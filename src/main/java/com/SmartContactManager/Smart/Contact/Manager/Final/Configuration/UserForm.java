@@ -3,9 +3,11 @@ package com.SmartContactManager.Smart.Contact.Manager.Final.Configuration;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,4 +29,5 @@ public class UserForm {
     private String phoneNumber;
     @NotBlank(message = "Please Field About Field")
     private String about;
+
 }

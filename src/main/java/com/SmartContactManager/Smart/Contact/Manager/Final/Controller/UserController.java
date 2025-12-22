@@ -5,12 +5,9 @@ import com.SmartContactManager.Smart.Contact.Manager.Final.Configuration.Helper;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Configuration.UserForm;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Entity.User;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Repository.UserRepository;
-import com.SmartContactManager.Smart.Contact.Manager.Final.Service.EmailService;
 import com.SmartContactManager.Smart.Contact.Manager.Final.Service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import jdk.jfr.Category;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,16 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.SecureRandom;
-import java.util.UUID;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    EmailService emailService;
+
 
     @Autowired
     UserRepository userRepository;
@@ -117,6 +111,13 @@ public class UserController {
         }
 
         return "redirect:/user/login?notEnabled=true&otpVerify=true";
+    }
+
+
+    @PostMapping("/changeProfile")
+    public String changeProfile(@RequestParam("userProfile")MultipartFile photo, Authentication authentication){
+        userService.changeProfile(photo,authentication);
+        return "redirect:/user/profile";
     }
 
 

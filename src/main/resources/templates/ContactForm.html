@@ -24,7 +24,7 @@
     </div>
     <div class=" flex mt-3">
 
-        <a href="" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9 font-bold ">Logout</a>
+        <a th:href="@{/logout}" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9 font-bold ">Logout</a>
     </div>
 </nav>
 
@@ -126,21 +126,21 @@
                                 <input type="text" name="linkedinLink" th:field="*{linkedinLink}" placeholder="https://www.google.com" class="bg-slate-200 p-1 max-w-2xl">
                             </div>
                         </div>
-                        <!-- 7 -->
+
                         <div class="flex flex-col mt-3">
                             <label for="image" class="">Contact Image</label>
                             <input type="file" name="multipartFile"  id="image" class=" bg-slate-200 p-1 w-full">
                         </div>
-                        <!--8-->
-<!--                        <div class="flex flex-col mt-3">-->
-<!--                            <img src="" alt="" id="imagepreview" class="max-h-80">-->
-<!--                        </div>-->
-                        <!-- 9 -->
+
+                        <div class="flex flex-col mt-3">
+                            <img src="" alt="" id="imagepreview" class="max-h-80">
+                        </div>
+
                         <div class="flex gap-4 mt-3">
                             <input type="checkbox" name="favourite" class=" bg-black ">
                             <p class="">is this your favourite contact?</p>
                         </div>
-                        <!-- 10 -->
+
                         <div class=" flex gap-10 justify-center mt-3">
                             <button type="submit" class="bg-blue-400 text-white p-2">Add Contact</button>
                             <button type="reset " class="bg-black text-white p-2 min-w-22">Reset</button>
