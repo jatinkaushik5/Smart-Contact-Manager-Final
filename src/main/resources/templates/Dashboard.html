@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css}" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+</head>
+<body class="bg-slate-200">
+<nav class="flex justify-evenly bg-slate-950 min-h-14">
+    <div class="flex flex-col justify-center md:hidden ">
+        <a href="" id="sidenavbtn"> <i class="fa-solid fa-bars text-white text-2xl" ></i></a>
+    </div>
+    <div class="flex gap-1.5 mt-4">
+        <img th:src="@{/img/telephone.png}" alt="" class="max-h-7">
+        <h2 class=" text-white">SmartContactManager</h2>
+    </div>
+    <div class="hidden gap-4 mt-4 md:flex">
+        <a href="" class="text-white">Home</a>
+        <a href="" class="text-white">About</a>
+        <a href="" class="text-white">Services</a>
+        <a href="" class="text-white">Contact</a>
+    </div>
+    <div class=" flex mt-3">
+        <a th:href="@{/logout}" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9  font-bold ">Logout</a>
+    </div>
+</nav>
+<!-- nav ends -->
+<main class="grid grid-cols-5 min-h-[94vh]">
+    <div class=" col-span-1 fixed md:static  h-full  bg-slate-950  transition-transform duration-300   " id="sidenav">
+        <!-- 1 -->
+        <div class="flex pl-1 ">
+            <p class="font-bold text-green-400 text-center" th:text="${User.email}"></p>
+        </div>
+        <!-- 2 -->
+        <div class="flex flex-col pl-2 gap-4 mt-7">
+            <!-- 1 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="#" class="hover:border-b-2 text-white border-blue-400">Dashboard</a>
+            </div>
+            <!-- 2 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-circle-user text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Profile</a>
+            </div>
+            <!-- 3 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-message p-1 text-white"></i>
+                <a th:href="@{/user/contact}" class="hover:border-b-2 text-white border-blue-400">Contact</a>
+            </div>
+
+            <!-- 6 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/login}" class="hover:border-b-2 text-white border-blue-400">Sign in</a>
+            </div>
+            <!-- 7 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/register}" class="hover:border-b-2 text-white border-blue-400">Sign up</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- mainbody -->
+    <div class="col-span-4 flex items-center flex-col">
+        <h1 class="text-center">Welcome to Dashboard</h1>
+    </div>
+</main>
+<script th:src="@{/js/navscript.js}"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactsPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+</head>
+<body>
+<nav class="flex justify-evenly bg-slate-950 min-h-14">
+    <div class="flex flex-col justify-center md:hidden ">
+        <a href="" id="sidenavbtn"> <i class="fa-solid fa-bars text-white text-2xl" ></i></a>
+    </div>
+    <div class="flex gap-1.5 mt-4">
+        <img src="telephone.png" alt="" class="max-h-7">
+        <h2 class=" text-white">SmartContactManager</h2>
+    </div>
+    <div class="hidden gap-4 mt-4 md:flex">
+        <a href="" class="text-white">Home</a>
+        <a href="" class="text-white">About</a>
+        <a href="" class="text-white">Services</a>
+        <a href="" class="text-white">Contact</a>
+    </div>
+    <div class=" flex mt-3">
+        <a href="" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9  font-bold ">Logout</a>
+    </div>
+</nav>
+<!-- nav ends -->
+<main class="grid grid-cols-5 min-h-[90vh]">
+    <div class=" col-span-1  fixed md:static h-full  bg-slate-950  transition-transform duration-300  z-10 " id="sidenav">
+        <!-- 1 -->
+        <div class="flex pl-1 ">
+            <p class="font-bold text-green-400">Welcome To SCM</p>
+        </div>
+        <!-- 2 -->
+        <div class="flex flex-col pl-2 gap-4 mt-7">
+            <!-- 1 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Dashboard</a>
+            </div>
+            <!-- 2 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-circle-user text-white p-1"></i>
+                <a href="" class="hover:border-b-2 text-white border-blue-400">Profile</a>
+            </div>
+            <div class="flex gap-4">
+                <i class="fa-solid fa-message p-1 text-white"></i>
+                <a th:href="@{/user/Addcontact}" class="hover:border-b-2 border-blue-400 text-white">Add Contact</a>
+            </div>
+            <!-- 6 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/login}" class="hover:border-b-2 border-blue-400 text-white">Sign in</a>
+            </div>
+            <!-- 7 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/register}" class="hover:border-b-2 border-blue-400 text-white">Sign up</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- mainbody -->
+    <div class="md:col-span-4 col-span-5 flex items-center gap-15  flex-col ">
+       <form th:action="@{/user/contacts/search}" class="flex w-full" method="get">
+         <div class="flex justify-evenly w-full mt-1 ">
+           <div>
+             <select name="field" class="select " required>
+            <option  selected>Choose Search Type</option>
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+            <option value="phoneNumber">Phone Number</option>
+            <option value="all">No Filter</option>
+</select>
+           </div>
+            
+            <div class="ml-5">
+                <label class="input">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input type="search" name="value"   placeholder="Search"  />
+</label>
+            </div>
+            <!-- 3 -->
+            <div class="flex gap-5">
+                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" onclick="exportData()" type="submit">Export Data</button>
+            </div>
+        </div>
+       </form>
+        <div class="overflow-x-auto w-full">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Links</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- row 1 -->
+                <tr data-th-object="${c}"
+                        data-th-each="c:${contacts.getContent()}">
+                    <!-- 1 -->
+                    <td>
+                        <div class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-squircle h-12 w-12">
+                                    <img
+                                            th:src=*{profilePictureurl}
+                                            alt="Avatar Tailwind CSS Component" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold" data-th-text="*{name}"></div>
+                                <div class="text-sm opacity-50" data-th-text="*{email}"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <!-- 2 -->
+                    <td data-th-text="*{phoneNumber}">
+
+                    </td>
+                    <!-- 3 -->
+                    <td>
+                        <a th:href="@{Weblink}"><i class="fa-solid fa-globe "></i></a>
+                        <a th:href="@{LinkedInlink}"><i class="fa-brands fa-linkedin"></i></a>
+                        <i class="fa-solid fa-link"></i>
+                    </td>
+                    <th>
+                       <div class="flex gap-1">
+                           <a th:href="@{/user/contacts/delete/{id}(id=*{phoneNumber})}" ><i class="fa-solid fa-delete-left p-1 text-red-500"></i></a>
+                           <a th:href="@{/user/contacts/show/{id}(id=*{phoneNumber})}" ><i class="fa-solid fa-street-view p-1 text-green-500"></i></a>
+                           <a th:href="@{/user/contacts/update/{id}(id=*{phoneNumber})}" ><i class="fa-solid fa-pen"></i></a>
+                       </div>
+
+                    </th>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <table class="hidden" id="contact-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Linkedin Link</th>
+                <th>Web Link</th>
+                <th>Profile Picture Url</th>
+            </tr>
+            </thead>
+            <tbody data-th-each="c:${contacts.getContent()}" data-th-object="${c}">
+            <td th:text="*{name}" ></td>
+            <td th:text="*{profilePictureurl}"></td>
+            <td th:text="*{LinkedInlink}"></td>
+            <td  th:text="*{ Weblink}" ></td>
+            <td th:text="*{profilePictureurl}"></td>
+            </tbody>
+        </table>
+<!--        pagination-->
+        <div class="join" >
+            <a data-th-each="index :${#numbers.sequence(0,contacts.totalPages -1)}"  class="join-item btn btn-square" type="radio"  aria-label="2" data-th-text="${index+1}" th:href="@{/user/contacts(pagenumber=*{index}, size=*{size})}" ></a>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+<script>
+    function exportData() {
+      TableToExcel.convert(document.getElementById("contact-table"), {
+        name: "contacts.xlsx",
+        sheet: {
+          name: "Sheet 1",
+        },
+      });
+    }
+</script>
+<script th:src="@{/js/navscript.js}"></script>
+</body>
+</html>

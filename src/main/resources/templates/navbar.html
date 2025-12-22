@@ -1,0 +1,23 @@
+<nav th:fragment="Navbar"  class="w-full flex md:justify-evenly justify-evenly min pt-3 bg-slate-950" xmlns:th="">
+    <div class="flex gap-4 pb-1.5">
+        <img th:src="@{/img/telephone.png}" alt="" class="max-h-7">
+        <h1 class="text-green-400  font-extrabold ">Contact Manager</h1>
+    </div>
+    <!-- nav starts -->
+    <nav class=" hidden gap-8 pb-1.5 hidden md:flex"  >
+        <a href="" class="text-white hover:text-green-400">Home</a>
+        <a href="" class="text-white hover:text-green-400">Contact</a>
+        <a href="" class="text-white hover:text-green-400">Login</a>
+        <a href="" class="text-white hover:text-green-400">Sign Up</a>
+    </nav>
+    <a href=""id="sidenavbtn" class="md:hidden"><i class="fa-solid fa-bars text-white  text-2xl"></i></a>
+</nav>
+<!-- small navbar -->
+<div class=" flex-col flex items-center   hidden bg-slate-950  " id="sidenav">
+    <a href="" class="text-white mb-1">Home</a>
+    <a href="" class="text-white mb-1">Contact</a>
+    <a href="Login.html" class="text-white mb-1">Login</a>
+    <a href="SignUp.html" class="text-white mb-1">Sign Up</a>
+</div>
+
+<!-- nav ends -->

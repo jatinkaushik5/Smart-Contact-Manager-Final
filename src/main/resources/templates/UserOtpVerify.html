@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css}" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Login Page</title>
+</head>
+<body class="bg-slate-200 ">
+<nav class="flex justify-evenly bg-slate-950 min-h-14">
+    <div class="flex flex-col justify-center md:hidden ">
+        <a href="" id="sidenavbtn"> <i class="fa-solid fa-bars text-white text-2xl" ></i></a>
+    </div>
+    <div class="flex gap-1.5 mt-4">
+        <img th:src="@{/img/telephone.png}" alt="" class="max-h-7">
+        <h2 class=" text-white">SmartContactManager</h2>
+    </div>
+    <div class="hidden gap-4 mt-4 md:flex">
+        <a th:href="@{/Home.html}" class="text-white">Home</a>
+        <a th:href="@{/user/contact}" class="text-white">Contacts</a>
+        <a th:href="@{/user/login}" class="text-white">Login</a>
+        <a th:href="@{/user/register}" class="text-white">Sign Up</a>
+    </div>
+</nav>
+<!-- small navbar -->
+<div class="  flex-col flex items-center   hidden bg-slate-950 " id="sidenav">
+    <a th:href="@{/Home.html}" class="text-white mb-1">Home</a>
+    <a th:href="@{/user/contact}" class="text-white mb-1">Contact</a>
+    <a th:href="@{/user/login}" class="text-white mb-1">Login</a>
+    <a th:href="@{/user/register}" class="text-white mb-1">Sign Up</a>
+</div>
+
+<!-- nav ends -->
+
+<main class="flex justify-center items-center min-h-screen">
+    <section class=" min-w-sm min-h-fit  bg-white rounded-2xl shadow-md shadow-black">
+        <div class="flex flex-col mb-8">
+            <h2 class=" font-bold text-lg pl-2 text-center ">Login Here</h2>
+            <p class="font-normal text-sm text-slate-500 text-center">Start Managing Contacts Here....</p>
+
+        </div>
+        <form th:action="@{/user/userotpConfirmation}"   class="mb-8" method="post">
+
+            <!-- 1 -->
+            <div class="flex flex-col items-center mb-3 gap-3" >
+                <label for="email" class=" font-serif">UserName</label>
+                <input id="email" name="email" type="text" class=" bg-gray-500  rounded-lg w-[80%] text-white p-1" placeholder="Email" required >
+            </div>
+            <!-- 2 -->
+
+            <!--            3-->
+            <div class="flex flex-col items-center gap-3 mb-6"  >
+                <label for="otp" class="font-serif ">4 digit OTP</label>
+                <input id="otp" name="otp" type="password" maxlength="4" minlength="4" class="bg-gray-500 text-white w-[80%] p-1 rounded-lg" placeholder=".........." required>
+            </div>
+            <div class="flex  flex-col p-10  justify-center mt-2 gap-8 ">
+                <button class=" hover:cursor-pointer  p-2 bg-blue-500 text-white" type="submit" >Login</button>
+                <a th:href="@{/oauth2/authorization/google}" class="bg-slate-200 shadow-md hover:cursor-pointer p-2  text-white">
+                    <div class="flex gap-3 justify-center  text-black">
+                        Login With Google <img th:src="@{/img/google.png}" alt="" class="max-h-5 pt-1">
+                    </div>
+                </a>
+
+            </div>
+        </form>
+
+
+
+
+
+
+    </section>
+</main>
+
+<script th:src="@{/js/navscript.js}"></script>
+</body>
+</html>

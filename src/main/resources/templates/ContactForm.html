@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css}" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+</head>
+<body class="bg-slate-200">
+<nav class="flex justify-evenly bg-slate-950 min-h-14 ">
+    <div class="flex flex-col justify-center md:hidden ">
+        <a href="" id="sidenavbtn"> <i class="fa-solid fa-bars text-white text-2xl" ></i></a>
+    </div>
+    <div class="flex gap-1.5 mt-4">
+        <img src="telephone.png" alt="" class="max-h-7">
+        <h2 class="text-[17px] text-white">SmartContactManager</h2>
+    </div>
+    <div class="hidden gap-4 mt-4 md:flex">
+        <a href="" class="text-white">Home</a>
+        <a href="" class="text-white">About</a>
+        <a href="" class="text-white">Services</a>
+        <a href="" class="text-white">Contact</a>
+    </div>
+    <div class=" flex mt-3">
+
+        <a href="" class="bg-red-500 text-white p-2 rounded-md text-[14px] max-h-9 font-bold ">Logout</a>
+    </div>
+</nav>
+
+<!-- nav ends -->
+<main class="grid grid-cols-5 min-h-[94vh]">
+    <div class=" col-span-1  fixed md:static transition-transform duration-300  h-full bg-slate-950 " id="sidenav">
+        <!-- 1 -->
+        <div class="flex pl-1 ">
+            <p class="font-bold text-white">Welcome to Smart Contact Manager</p>
+        </div>
+        <!-- 2 -->
+        <div class="flex flex-col pl-2 gap-4 mt-7">
+            <!-- 1 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a href="/user/dashboard" class="hover:border-b-2 border-blue-400 text-white">Dashboard</a>
+            </div>
+            <!-- 2 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-circle-user p-1 text-white"></i>
+                <a href="" class="hover:border-b-2 border-blue-400 text-white">Profile</a>
+            </div>
+            <!-- 3 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-message p-1 text-white"></i>
+                <a th:href="@{/user/Addcontact}" class="hover:border-b-2 border-blue-400 text-white">Add Contact</a>
+            </div>
+            <!-- 6 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/login}" class="hover:border-b-2 border-blue-400 text-white">Sign in</a>
+            </div>
+            <!-- 7 -->
+            <div class="flex gap-4">
+                <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
+                <a th:href="@{/user/register}" class="hover:border-b-2 border-blue-400 text-white">Sign up</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- mainbody -->
+    <div class="col-span-4  flex items-center flex-col">
+        <main class="flex flex-col justify-center items-center min-h-screen">
+            <main class="flex flex-col justify-center items-center min-h-screen">
+                <section class=" flex flex-col bg-white max-w-lg rounded-2xl">
+                    <h1 class=" font-bold text-center text-[17px] ">Add new Contact</h1>
+                    <p class="text-gray-600 text-wrap text-center text-[12px]">This Contact is saved in cloud ,you can email using Smart Contact Manager</p>
+                    <form th:action="@{/user/saveContact}" data-th-object="${contactForm}"  enctype="multipart/form-data" class="flex flex-col p-5 " method="Post">
+                        <!-- 1 -->
+                        <div class="flex flex-col   gap-2 mt-1.5">
+                            <label for="name" class="">Contact Name</label>
+                            <div class="flex  ">
+                                <i class='bx  bx-user pt-3   bg-slate-200 '></i>
+                                <input type="text" id="name" th:field="*{contactName}" name="contactName" placeholder="Name" class=" bg-slate-200 p-1 rounded-r-md w-full">
+                                <input type="hidden" th:field="*{id}"/>
+                            </div>
+                            <p  th:if="${#fields.hasErrors('contactName')}" data-th-errors="*{contactName}"></p>
+                        </div>
+                        <!-- 2 -->
+                        <div class="flex flex-col gap-2 mt-1.5">
+                            <label for="email" class="">Contact Email</label>
+                            <div class="flex">
+                                <i class='bx  bx-envelope-alt pt-3 bg-slate-200'></i>
+                                <input type="email" id="email" th:field="*{contactEmail}" name="contactEmail" placeholder="example@gmail.com" class=" bg-slate-200 p-1 rounded-r-md w-full">
+                            </div>
+                        </div>
+                        <!-- 3 -->
+                        <div class="flex flex-col gap-2 mt-1.5">
+                            <label for="phoneNumber" class="">Contact phone</label>
+                            <div class="flex justify-center">
+                                <i class='bx  bx-phone pt-3 bg-slate-200'></i>
+                                <input type="tel" id="phoneNumber" th:field="*{contactPhone}" name="contactPhone" placeholder="XXX-XXXX-XXX" class=" bg-slate-200 p-1 rounded-r-md w-full">
+                            </div>
+                        </div>
+                        <!-- 4 -->
+                        <div class="flex flex-col gap-2 mt-1.5">
+                            <label for="address" class="">Contact Address</label>
+                            <div class="flex">
+                                <textarea name="contactAddress" id="address" th:field="*{contactAddress}" class="bg-slate-200 p-3 w-full" placeholder="Address of Contact"></textarea>
+                            </div>
+                        </div>
+                        <!-- 5 -->
+                        <div class="flex flex-col gap-2 mt-1.5">
+                            <label for="description" class="">Contact description</label>
+                            <div class="flex">
+                                <textarea name="contactDescription"  th:field="*{contactDescription}" id="description" class="bg-slate-200 p-2 w-full" placeholder="Address of Contact"></textarea>
+                            </div>
+                        </div>
+                        <!-- 6 -->
+                        <div class="flex gap-3 md:flex-row flex-col mt-4">
+                            <div class="flex">
+                                <i class='bx  bx-globe-alt-2 bg-slate-200 p-3'></i>
+                                <input type="text" name="webLink" th:field="*{webLink}" placeholder="https://www.google.com" class="bg-slate-200 p-1 max-w-2xl">
+                            </div>
+                            <div class="flex">
+                                <i class='bx  bx-link bg-slate-200 p-3'></i>
+                                <input type="text" name="linkedinLink" th:field="*{linkedinLink}" placeholder="https://www.google.com" class="bg-slate-200 p-1 max-w-2xl">
+                            </div>
+                        </div>
+                        <!-- 7 -->
+                        <div class="flex flex-col mt-3">
+                            <label for="image" class="">Contact Image</label>
+                            <input type="file" name="multipartFile"  id="image" class=" bg-slate-200 p-1 w-full">
+                        </div>
+                        <!--8-->
+<!--                        <div class="flex flex-col mt-3">-->
+<!--                            <img src="" alt="" id="imagepreview" class="max-h-80">-->
+<!--                        </div>-->
+                        <!-- 9 -->
+                        <div class="flex gap-4 mt-3">
+                            <input type="checkbox" name="favourite" class=" bg-black ">
+                            <p class="">is this your favourite contact?</p>
+                        </div>
+                        <!-- 10 -->
+                        <div class=" flex gap-10 justify-center mt-3">
+                            <button type="submit" class="bg-blue-400 text-white p-2">Add Contact</button>
+                            <button type="reset " class="bg-black text-white p-2 min-w-22">Reset</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </main>
+    </div>
+</main>
+<script th:src="@{/js/contactscript.js}"></script>
+<script th:src="@{/js/navscript.js}"></script>
+</body>
+</html>
