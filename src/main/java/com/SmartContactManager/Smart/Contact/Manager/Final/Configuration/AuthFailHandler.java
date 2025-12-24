@@ -24,7 +24,7 @@ public class AuthFailHandler  implements AuthenticationFailureHandler {
             response.sendRedirect("/user/login?notEnabled=true");
         }
         else{
-            response.sendRedirect("/user/login?error=true");
+            response.sendRedirect("/user/login");
         }
     }
 }
