@@ -79,7 +79,10 @@
     <div class="col-span-5 flex h-[95vh] flex-col  items-center justify-center  ">
         <div class="flex w-full justify-centers justify-center  ">
             <div class="hero bg-base-200 flex flex-col   w-[50%]   ">
+                <div class=" flex justify-between w-full">
                 <p class="font-serif">User Profile</p>
+                <a th:href="@{/user/dashboard}"><i class="fa-solid fa-x"></i></a>
+                </div>
                 <div class="hero-content flex flex-col  bg-slate-950  w-full min-h-88 min-w-fit  ">
                     <img th:src="*{profilepicUrl}" class="max-w-sm rounded-lg shadow-2xl border-2 h-34 "/>
                     <div class="  w-[50%] min-w-fit">
