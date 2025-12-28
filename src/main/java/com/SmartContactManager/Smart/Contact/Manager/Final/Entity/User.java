@@ -32,7 +32,6 @@ public class User implements UserDetails {
     private  String email;
 
     @Getter(AccessLevel.NONE)
-    @Column(nullable = false)
     private String password;
     private String about;
     private  String profilepic;

@@ -1,53 +1,56 @@
 
+version: '3.8'
+
 services:
   mysql:
     image: mysql:8
 
     container_name: mysql_db_docker
+    hostname: mysql
     environment:
-        MYSQL_ROOT_PASSWORD: 7685
-        MYSQL_DB: SmartContactManager
+      MYSQL_ROOT_PASSWORD: 7685
+      MYSQL_DATABASE: SmartContactManager
+
 
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
       interval: 10s
       timeout: 10s
       retries: 10
 
+    restart: unless-stopped
+
     ports:
-        - "3306:3306"
+        - "3307:3306"
     volumes:
-      - ./mysql_data:/var/lib/mysql
+      -  mysql_data:/var/lib/mysql
+
 
 
   springboot:
     build: .
     container_name: scm
     environment:
-     MYSQL_HOST: mysql
-     MYSQL_USER: root
-     MYSQL_PASSWORD: 7685
-     MYSQL_PORT: 3306
-     MYSQL_DB: SmartContactManager
-     SPRING_EMAIL_HOST: smtp.gmail.com
-     SPRING_EMAIL_PORT: 587
-     SPRING_EMAIL_USERNAME: kaushikascm@gmail.com
-     SPRING_EMAIL_PASSWORD: xppnaetknowtfmrf
-     SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: true
-     SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: true
-     CLOUDINARY_API_KEY: 192348812878715
-     CLOUDINARY_API_SECRET: 4M4T_lD_NopzE8KCYm1kYADCsRg
-     CLOUDINARY_NAME: dgdznrtb8
-     SPRING_PROFILES_ACTIVE: docker
+        MYSQL_HOST: mysql
+        MYSQL_USER: root
+        MYSQL_PASSWORD: 7685
+        MYSQL_PORT: 3306
+        MYSQL_DB: SmartContactManager
+        SPRING_PROFILES_ACTIVE: docker
 
 
     ports:
       - "8080:8080"
 
     depends_on:
-       mysql:
+      mysql:
         condition: service_healthy
+
+
+
 
 
 volumes:
   mysql_data:
+
+
