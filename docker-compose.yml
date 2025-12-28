@@ -6,19 +6,17 @@ services:
     image: mysql:8
 
     container_name: mysql_db_docker
-    hostname: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 7685
       MYSQL_DATABASE: SmartContactManager
 
 
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$7685 --silent"]
       interval: 10s
       timeout: 10s
       retries: 10
 
-    restart: unless-stopped
 
     ports:
         - "3307:3306"
@@ -31,9 +29,9 @@ services:
     build: .
     container_name: scm
     environment:
-        MYSQL_HOST: mysql
         MYSQL_USER: root
         MYSQL_PASSWORD: 7685
+        MYSQL_HOST: mysql
         MYSQL_PORT: 3306
         MYSQL_DB: SmartContactManager
         SPRING_PROFILES_ACTIVE: docker

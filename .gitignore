@@ -13,6 +13,9 @@ target/
 .springBeans
 .sts4-cache
 .env
+# Ignore MySQL socket and data
+mysql_data/
+*.sock
 
 
 ### IntelliJ IDEA ###

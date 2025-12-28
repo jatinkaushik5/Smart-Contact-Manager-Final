@@ -2,6 +2,7 @@ package com.SmartContactManager.Smart.Contact.Manager.Final.Configuration;
 
 import com.SmartContactManager.Smart.Contact.Manager.Final.Service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -22,6 +23,7 @@ public class SecurityConfig {
     CustomUserDetailsService customUserDetailsService;
 
     @Autowired
+    @Lazy
     CustomaAuthSuccessHandler customaAuthSuccessHandler;
 
     @Autowired

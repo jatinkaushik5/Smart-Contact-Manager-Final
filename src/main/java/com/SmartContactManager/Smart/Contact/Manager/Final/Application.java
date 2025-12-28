@@ -48,6 +48,9 @@ public class Application  {
         v = dotenv.get("GOOGLE_CLIENT_SECRET");
         if (v != null) System.setProperty("GOOGLE_CLIENT_SECRET", v);
 
+        v = dotenv.get("SPRING_DATASOURCE_URL");
+        if (v != null) System.setProperty("jdbc:mysql://mysql:3306/SmartContactManager", v);
+
         SpringApplication.run(Application.class, args);
 
 
