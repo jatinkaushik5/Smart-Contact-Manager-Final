@@ -31,44 +31,30 @@
     <div class=" col-span-1  fixed md:static h-full  bg-slate-950  transition-transform duration-300  z-10 " id="sidenav">
         <!-- 1 -->
         <div class="flex pl-1 ">
-            <p class="font-bold text-green-400">Kaushikjatin532004@Gmail.com</p>
+            <p class="font-bold text-green-400"></p>
         </div>
         <!-- 2 -->
         <div class="flex flex-col pl-2 gap-4 mt-7">
             <!-- 1 -->
             <div class="flex gap-4">
                 <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Dashboard</a>
+                <a th:href="@{/user/dashboard}" class="hover:border-b-2 text-white border-blue-400">Dashboard</a>
             </div>
             <!-- 2 -->
             <div class="flex gap-4">
                 <i class="fa-solid fa-circle-user text-white p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Profile</a>
+                <a th:href="@{/user/profile}" class="hover:border-b-2 text-white border-blue-400">Profile</a>
             </div>
-            <!-- 3 -->
-            <div class="flex gap-4">
-                <i class="fa-solid fa-message p-1 text-white"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Inbox</a>
-            </div>
-            <!-- 4 -->
-            <div class="flex gap-4">
-                <i class="fa-solid fa-right-to-bracket text-white  p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Users</a>
-            </div>
-            <!-- 5 -->
-            <div class="flex gap-4">
-                <i class="fa-brands fa-shopify p-1 text-white"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Products</a>
-            </div>
+
             <!-- 6 -->
             <div class="flex gap-4">
                 <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Sign in</a>
+                <a th:href="@{/user/login}" class="hover:border-b-2 text-white border-blue-400">Sign in</a>
             </div>
             <!-- 7 -->
             <div class="flex gap-4">
                 <i class="fa-solid fa-right-to-bracket text-white p-1"></i>
-                <a href="" class="hover:border-b-2 text-white border-blue-400">Sign up</a>
+                <a th:href="@{/user/register}" class="hover:border-b-2 text-white border-blue-400">Sign up</a>
             </div>
         </div>
 

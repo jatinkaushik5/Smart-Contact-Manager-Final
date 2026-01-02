@@ -8,11 +8,11 @@ services:
     container_name: mysql_db_docker
     environment:
       MYSQL_ROOT_PASSWORD: 7685
-      MYSQL_DATABASE: SmartContactManager
+      MYSQL_DATABASE: railway
 
 
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$7685 --silent"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 10s
       retries: 10
@@ -20,13 +20,16 @@ services:
 
     ports:
         - "3307:3306"
+
     volumes:
       -  mysql_data:/var/lib/mysql
+    networks:
+      - scm-network
 
 
 
   springboot:
-    build: .
+    image: kaushikjatin05/smart-contact-manager-final-springboot-jatinkau
     container_name: scm
     environment:
         MYSQL_USER: root
@@ -37,8 +40,12 @@ services:
         SPRING_PROFILES_ACTIVE: docker
 
 
+
     ports:
       - "8080:8080"
+
+    networks:
+      - scm-network
 
     depends_on:
       mysql:
@@ -50,5 +57,9 @@ services:
 
 volumes:
   mysql_data:
+
+networks:
+  scm-network:
+    driver: bridge
 
 

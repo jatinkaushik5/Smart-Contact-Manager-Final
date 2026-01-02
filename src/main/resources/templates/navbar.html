@@ -1,10 +1,14 @@
-<nav th:fragment="Navbar"  class="w-full flex md:justify-evenly justify-evenly min pt-3 bg-slate-950" xmlns:th="">
+<nav th:fragment="Navbar" class="w-full flex md:justify-evenly justify-evenly min pt-3 bg-slate-950" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="flex gap-4 pb-1.5">
         <img th:src="@{/img/telephone.png}" alt="" class="max-h-7">
         <h2 class="text-[17px] text-white">SmartContactManager</h2>
     </div>
     <!-- nav starts -->
-    <nav class=" hidden gap-8 pb-1.5 hidden md:flex"  >
+    <nav class=" hidden gap-8 pb-1.5 hidden md:flex"  xmlns:th="http://www.w3.org/1999/xhtml">
         <a th:href="@{/Home.html}" class="text-white hover:text-green-400">Home</a>
         <a th:href="@{/user/contact}" class="text-white hover:text-green-400">Contact</a>
         <a th:href="@{/user/login}" class="text-white hover:text-green-400">Login</a>
@@ -13,11 +17,11 @@
     <a href=""id="sidenavbtn" class="md:hidden"><i class="fa-solid fa-bars text-white  text-2xl"></i></a>
 </nav>
 <!-- small navbar -->
-<div class=" flex-col flex items-center   hidden bg-slate-950  " id="sidenav">
-    <a href="" class="text-white mb-1">Home</a>
-    <a href="" class="text-white mb-1">Contact</a>
-    <a href="Login.html" class="text-white mb-1">Login</a>
-    <a href="SignUp.html" class="text-white mb-1">Sign Up</a>
+<div class=" flex-col flex items-center   hidden bg-slate-950  " id="sidenav" xmlns:th="http://www.w3.org/1999/xhtml">
+    <a th:href="@{/Home.html}"  class="text-white mb-1">Home</a>
+    <a th:href="@{/user/contact}" class="text-white mb-1">Contact</a>
+    <a th:href="@{/user/login}" class="text-white mb-1">Login</a>
+    <a th:href="@{/user/register}" class="text-white mb-1">Sign Up</a>
 </div>
 
 <!-- nav ends -->
