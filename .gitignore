@@ -17,7 +17,6 @@ target/
 mysql_data/
 *.sock
 
-.env
 
 
 ### IntelliJ IDEA ###
